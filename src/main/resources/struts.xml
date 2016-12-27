@@ -20,6 +20,40 @@
         </action>
 
         <action name="hello" class="com.action.HelloAction"></action>
+
+        <action name="downs" class="com.action.DownAction">
+            <param name="path">/download</param>
+            <param name="ext">.jsp</param>
+            <result name="success" type="stream">
+                <param name="contentType">application/x-download</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">filename=${fn}${ext}</param>
+                <param name="bufferSize">40960</param>
+            </result>
+        </action>
+
+
+        <action name="downj" class="com.action.DownAction">
+            <param name="path">/download</param>
+            <param name="ext">.jpg</param>
+            <result name="success" type="stream">
+                <param name="contentType">application/x-download</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">filename=${fn}${ext}</param>
+                <param name="bufferSize">40960</param>
+            </result>
+        </action>
+
+        <action name="downr" class="com.action.DownAction">
+            <param name="path">/download</param>
+            <param name="ext">.rar</param>
+            <result name="success" type="stream">
+                <param name="contentType">application/x-download</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">filename=${fn}${ext}</param>
+                <param name="bufferSize">40960</param>
+            </result>
+        </action>
     </package>
 </struts>
 

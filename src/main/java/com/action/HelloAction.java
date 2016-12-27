@@ -7,7 +7,7 @@ import org.apache.struts2.ServletActionContext;
  */
 public class HelloAction {
     public String execute() throws Exception{
-        ServletActionContext.getResponse().getWriter().print("hello-action");
+        ServletActionContext.getResponse().getWriter().print("hello-action-243223423asdfasd");
         return null;
     }
 }
