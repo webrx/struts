@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="mytimer" extends="struts-default" namespace="/">
+        <interceptors>
+            <interceptor name="tt" class="com.opensymphony.xwork2.interceptor.TimerInterceptor"></interceptor>
+        </interceptors>
+        <action name="regok" class="com.action.RegAction">
+            <interceptor-ref name="tt"></interceptor-ref>
+        </action>
+
+    </package>
+
+    <package name="myi" namespace="/" extends="struts-default">
+        <interceptors>
+            <interceptor name="ttt" class="com.interceptor.TimeInterceptor"></interceptor>
+            <interceptor-stack name="my">
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+                <interceptor-ref name="ttt"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <action name="reg" class="com.action.RegAction">
+            <interceptor-ref name="my"></interceptor-ref>
+        </action>
+    </package>
+
+    <package name="reg" namespace="/" extends="auth">
+        <action name="myreg" class="com.action.RegAction"></action>
+        <action name="down">
+            <result>/down.jsp</result>
+        </action>
+    </package>
+</struts>
+

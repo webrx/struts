@@ -10,6 +10,22 @@
     <constant name="struts.custom.i18n.resources" value="res"/>
     <constant name="struts.action.extension" value="action,,"/>
     <constant name="struts.action.excludePattern" value="/test"/>
+
+    <!-- 安全检查包 -->
+    <package name="auth" extends="struts-default" namespace="/" abstract="true">
+        <interceptors>
+            <interceptor name="authlogin" class="com.interceptor.AuthInterceptor"></interceptor>
+            <interceptor-stack name="authstack">
+                <interceptor-ref name="authlogin"></interceptor-ref>
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="authstack"></default-interceptor-ref>
+        <global-results>
+            <result name="login" type="redirect">/login.jsp</result>
+        </global-results>
+    </package>
+
     <!--     <include file="struts-interactive.xml" /> -->
     <package name="default" extends="struts-default">
         <action name="show">
@@ -55,5 +71,7 @@
             </result>
         </action>
     </package>
+    <!-- 引入其它配置文件 -->
+    <include file="interceptor.xml"></include>
 </struts>
 
